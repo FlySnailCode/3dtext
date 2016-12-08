@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>散开收拢图标封装</title>
+		<title>散开收拢图标</title>
 		<style>
 			* {
 				margin: 0;
@@ -56,11 +56,10 @@
 					if (onOff) {
 						this.style.transform='rotate(360deg)';
 						for (var i = 0; i < aLi.length; i++) {
-							var P=calcLT(deg,r);
-							aLi[i].style.left=P.L;
-							aLi[i].style.top=P.T;
+							aLi[i].style.left=Math.sin(deg*Math.PI/180)*r+'px';
+							aLi[i].style.top=Math.cos(deg*Math.PI/180)*r+'px';
 							aLi[i].style.transform='rotate(-360deg)';
-							aLi[i].style.transition='1s '+i*100+'ms';
+							aLi[i].style.transition='0.5s '+i*100+'ms';
 							deg-=22.5;
 						}
 					} else{
@@ -69,19 +68,10 @@
 							aLi[i].style.left=0;
 							aLi[i].style.top=0;
 							aLi[i].style.transform='rotate(0deg)';
-							aLi[i].style.transition='1s '+(500-i*100)+'ms';
-							
+							aLi[i].style.transition='0.5s '+(500-i*100)+'ms';
 						}
 					};
-					
 					onOff=!onOff;
-					function calcLT (deg,r) {
-						return {
-							L:Math.sin(deg*Math.PI/180)*r+'px',
-							T:Math.cos(deg*Math.PI/180)*r+'px'
-						}
-					}
-					
 				};
 			}
 		</script>
